@@ -1,5 +1,5 @@
-FakeLagInterval = 250  -- time between fake lag enables
-FakeLagTime = 500  -- time that allow fake lag to be enabled
+FakeLagInterval = 500  -- time between fake lag enables
+FakeLagTime = 250  -- time that allow fake lag to be enabled
 InfoPrintEnabled = 0
 InfoPrintInterval = 100
 InfoPrinted = 0

@@ -1,0 +1,39 @@
+FakeLagInterval = 250  -- time between fake lag enables
+FakeLagTime = 500  -- time that allow fake lag to be enabled
+InfoPrintEnabled = 0
+InfoPrintInterval = 100
+InfoPrinted = 0
+local FakeLagIntervalTime = 0  -- time that fake lag enabled
+local FakeLagTimeOn = 0  -- time that fake lag enabled
+
+engine.Notification('Fake lag timer info', 'To print info write lua InfoPrintEnabled = 1, to disable set 0 \nTo change time between info is printed write lua InfoPrintInterval = YOUR VALUE \nTo change time between fake lag enable write lua FakeLagInterval = YOUR VALUE \nTo change time that fake lag enabled write lua FakeLagTime = YOUR VALUE \nFor your value 100 = 1 second')
+
+callbacks.Register("CreateMove", function ()
+    if FakeLagInterval <= FakeLagIntervalTime then
+        FakeLagTimeOn = FakeLagTimeOn + 1
+        if FakeLagTime >= FakeLagTimeOn then
+            gui.SetValue('Fake Lag', 1)
+        elseif FakeLagTime <= FakeLagTimeOn then
+            FakeLagTimeOn = 0
+            FakeLagIntervalTime = 0
+        end
+    else
+        gui.SetValue('Fake Lag', 0)
+        FakeLagIntervalTime = FakeLagIntervalTime + 1
+    end
+    if InfoPrintEnabled == 1 then
+        if InfoPrintInterval == InfoPrinted then
+        --print('Fake',FakeLagIntervalTime)
+        --print(FakeLagTimeOn)
+        print('Fake Lag Interval =', FakeLagInterval)
+        print('Fake Lag Time =' ,FakeLagTime)
+        InfoPrinted = 0
+        elseif InfoPrinted < InfoPrintInterval then
+            InfoPrinted = InfoPrinted + 1
+        elseif InfoPrinted > InfoPrintInterval then
+            InfoPrinted = 0
+        end
+    else
+    end
+    --gui.SetValue('Fake Lag value (ms)', 120)
+end)

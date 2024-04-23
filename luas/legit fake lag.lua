@@ -35,8 +35,8 @@ callbacks.Register("CreateMove", function ()
         if InfoPrintInterval == InfoPrinted then
         --print('Fake',FakeLagIntervalTime)
         --print(FakeLagTimeOn)
-        print('Fake Lag Interval =', FakeLagInterval + Random1)
-        print('Fake Lag Time =' ,FakeLagTime + Random2)
+        print('FakeLagInterval =', FakeLagInterval + Random1)
+        print('FakeLagTime =' ,FakeLagTime + Random2)
         print('Randomnes =', Randomnes)
         InfoPrinted = 0
         elseif InfoPrinted < InfoPrintInterval then

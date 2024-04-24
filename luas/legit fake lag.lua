@@ -1,17 +1,18 @@
 Enabled = 0
-FakeLagInterval = 250  -- time between fake lag enabless
+FakeLagInterval = 250  -- time between fake lag enables
 FakeLagTime = 250  -- time that allow fake lag to be enabled
 InfoPrintEnabled = 0
 InfoPrintInterval = 100
 InfoPrinted = 0
 Randomnes = 0
+FakeLat = 100
 local FakeLagIntervalTime = 0  -- time that fake lag enabled
 local FakeLagTimeOn = 0  -- time that fake lag enabled
 local localPlayer = entities.GetLocalPlayer()
 Random1 = 0
 Random2 = 0
 
-engine.Notification('Fake lag timer info', 'To enable legit fake lag write lua Enabled = 1 in console \nTo print info write lua InfoPrintEnabled = 1, to disable set 0 \nTo change time between info is printed write lua InfoPrintInterval = YOUR VALUE \nTo change time between fake lag enable write lua FakeLagInterval = YOUR VALUE \nTo change time that fake lag enabled write lua FakeLagTime = YOUR VALUE \nTo add a bit random write lua Randomnes = 1 \nFor your value 100 = 1 second')
+engine.Notification('Fake lag timer info', 'To enable legit fake lag write lua Enabled = 1 in console \nTo change Fake Latency write in console lua FakeLat = YOUR VALUE \nTo print info write lua InfoPrintEnabled = 1, to disable set 0 \nTo change time between info is printed write lua InfoPrintInterval = YOUR VALUE \nTo change time between fake lag enable write lua FakeLagInterval = YOUR VALUE \nTo change time that fake lag enabled write lua FakeLagTime = YOUR VALUE \nTo add a bit random write lua Randomnes = 1 \nFor your value 100 = 1 second')
 
 callbacks.Register("CreateMove", function ()
     if localPlayer:IsAlive() then
@@ -21,7 +22,7 @@ callbacks.Register("CreateMove", function ()
                 if FakeLagTime  >= FakeLagTimeOn then
                     gui.SetValue('Fake Lag', 1)
                     gui.SetValue('Fake Latency', 1)
-                    gui.SetValue('Fake Latency Value (MS)', 500)
+                    gui.SetValue('Fake Latency Value (MS)', FakeLat)
                     gui.SetValue('BackTrack', 1)
                 elseif FakeLagTime + Random2 <= FakeLagTimeOn then
                     FakeLagTimeOn = 0
